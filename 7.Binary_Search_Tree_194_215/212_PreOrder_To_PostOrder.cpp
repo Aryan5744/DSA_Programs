@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-#define gc getchar_unlocked
+#define gc getchar_unlocked 
 #define fo(i,n) for(long long int i=0;i<n;i++)
 #define fr(i,n) for(i = n-1 ; i>0 ; i--)
 #define Pa(i,n,a) for(long long int i=0;i<n;i++){cout << a[i] << " ";}
@@ -36,60 +36,37 @@ typedef unordered_multiset <int> uomsi;
 typedef unordered_map<int, int> uomapii;
 typedef unordered_multimap<int, int> uommapii;
 typedef priority_queue<pii,vpii,greater<pii>> pqpv;
-
+typedef pair<int, vpii> pivii;
 //=======================
 
-/*
-1.Normal approach is to apply partitioning concept on the array
-Time Complexity : O(N)
+void findPostOrderUtil(int pre[], int n,int minVal,int maxVal, int &preIndex){
+    if(preIndex == n) return;
+    
+    if(pre[preIndex] < minVal || pre[preIndex] > maxVal) return;
 
-2.Two-Pointer approach with left = 0 and right = N-1
+    int val = pre[preIndex];
+    preIndex++;
 
-a.If a[left] < 0 && a[right] < 0 then left++
-b.If a[left] < 0 && a[right] > 0 then right-- & left++
-c.If a[left] > 0 && a[right] > 0 then right--
-d.If a[left] > 0 && a[right] < 0 then swap & left++ & right--
+    findPostOrderUtil(pre, n, minVal, val, preIndex);
+    findPostOrderUtil(pre, n, val, maxVal , preIndex);
 
-Time Complexity : O(N)
-
-*/
-
-void swap(int *a, int *b){
-    int temp = *a;
-    *a = *b;
-    *b = temp;
+    cout << val << " ";
 }
 
-void solve(int _arr[], int N){
-    int i = 0, j = N-1;
-    while(i <= j){
-        if(_arr[i] > 0 && _arr[j] < 0){
-            swap(_arr[i],_arr[j]);
-            i++;
-            j--;
-        }else if(_arr[i] < 0 && _arr[j] < 0){
-            i++;
-        }else if(_arr[i] > 0 && _arr[j] > 0){
-            j--;
-        }else{
-            i++;
-            j--;
-        }
-    }
-    Pa(i,N,_arr);
+void findPostOrder(int pre[], int n){
+    int preIndex = 0;
+    findPostOrderUtil(pre, n, INT_MIN, INT_MAX, preIndex);
 }
 
-int main() {
-    ios_base::sync_with_stdio(0), cin.tie(0), cout.tie(0);
-    int t;
-    cin >> t;
-    while(t--){
-        int N;
-        cin >> N;
-        int _arr[N];
-        fo(i,N)
-           cin >> _arr[i];
-        solve(_arr,N);
-    }
+// main program 
+int main() 
+{
+    ios_base::sync_with_stdio(0), cin.tie(0), cout.tie(0);  
+    int pre[] = { 40, 30, 35, 80, 100 };
+ 
+    int n = sizeof(pre) / sizeof(pre[0]);
+ 
+    // Calling function
+    findPostOrder(pre, n);
     return 0;
-}
+} 

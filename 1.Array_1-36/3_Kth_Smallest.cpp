@@ -38,6 +38,22 @@ typedef unordered_multimap<int, int> uommapii;
 typedef priority_queue<pii,vpii,greater<pii>> pqpv;
 //=======================
 
+/*
+1.Simple method is to sort array using O(N*LogN) sorting alogorithm like Merge & Heap sort.
+Time Complexity : O(N*LogN)
+
+2.Using Min Heap 
+Time Complexity : O(N + K*LogN)
+
+3.Using Max Heap
+Time Complexity : O(k + (N-k)*LogN)
+
+4.Using Quick Select(An advance implementation of Quick Sort)
+the idea is to place pivot at its correct position using partition method and then recurr 
+for either left or right subArray based on the value of K
+Time Complexity : O(N^2) (worst case) & O(N) (best case)
+*/
+
 void swap(int *x, int *y);
 
 class MaxHeap

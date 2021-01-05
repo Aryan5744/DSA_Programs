@@ -51,6 +51,18 @@ bool checkIfGreater(ll a, ll b){
 }
 //=======================
 
+/*
+"https://www.geeksforgeeks.org/write-a-program-to-reverse-an-array-or-string/"
+1. we will start from left = 0 and right = n-1
+and keep on swapping arr[left] and arr[right] while left < right 
+and increase left by 1 and decrease right by 1 for each iteration. 
+time complexity = O(n)
+space complexity = O(1)
+
+2. recursive approach is not efficient in terms of space complexity as it will have 
+space complexity = O(n)
+*/
+
 void solve(ll _arr[], ll _size){
     
     ll start = 0, end = _size -1;

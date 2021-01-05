@@ -39,6 +39,14 @@ typedef priority_queue<pii,vpii,greater<pii>> pqpv;
 
 //=======================
 
+/*
+1.Normal iterative approach
+Time Complexity : O(n)
+Only two traversals of the array is needed.
+Space Complexity : O(1)
+As no extra space is required.
+*/
+
 void solve(){
 }
 

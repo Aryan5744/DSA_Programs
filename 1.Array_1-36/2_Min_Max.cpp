@@ -48,6 +48,26 @@ int a[N];
 ll n, m, k;
 //=======================
 
+/*
+"https://www.geeksforgeeks.org/maximum-and-minimum-in-an-array/"
+
+1. with normal linear search where we first compare a[0] and a[1] and store the result and 
+then start comparing n-2 elements so this gives
+time complexity : O(n)
+
+2. with divide and conqure approach we divide array in two parts left and right to get the 
+max & min of left and right side.
+time complexity : O(n)
+
+3. with compare in pairs approach, if n is odd then initialize min and max as first element. 
+If n is even then initialize min and max as minimum and maximum of the first two elements respectively. 
+For rest of the elements, pick them in pairs and compare their 
+maximum and minimum with max and min respectively.
+time complexity : O(n) 
+
+##difference occurs in total no of comparisons are taking place in all 3 above approaches.
+*/
+
 struct Pair{
     ll min;
     ll max;
